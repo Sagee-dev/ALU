@@ -1,7 +1,7 @@
 -- Alu Alpha
 -- Geeth De Silva
 -- github : sagee-dev
--- v1.0
+-- v1.1
 -- simple alu to to perform addition, subtraction, and multiplication
 -- dedicated ripple carry adder
 -- dedicated ripple borrow subtractor, and 
@@ -137,8 +137,8 @@ begin
                             state <= CALCULATE;
                         elsif(opCode = "0010") then
                             -- Subtraction Operation
-                            subtractorInOne <= operendOne;
-                            subtractorInTwo <= operandTwo;
+                            subtractorInTwo <= operendOne;
+                            subtractorInOne <= operandTwo;
                             borrowIn        <= '0';
                             state <= CALCULATE;
                         elsif(opCode = "0011") then
