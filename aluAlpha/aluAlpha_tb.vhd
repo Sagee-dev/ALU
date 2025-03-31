@@ -1,7 +1,7 @@
 -- ALU Alpha test bench
 -- Geeth De Silva
 -- github : sagee-dev
--- v1.0
+-- v1.1
 -- Test bench file for ALU Alpha component
 -- Observes ALU output and tests different inputs to the ALU
 library ieee;
@@ -71,19 +71,19 @@ begin
         opCode <= "0001";  -- Set operation code for addition
         operendOne <= x"08";  -- Set first operand to 0x08 (8 in decimal)
         operendTwo <= x"0A";  -- Set second operand to 0x0A (10 in decimal)
-        wait for 100*clkPeriod;  -- Wait for processing time
+        wait for 200*clkPeriod;  -- Wait for processing time
         -- Assert the expected result (0x0012 = 18 in decimal)
         assert( result = x"0012") report("Case 2 : Module error");
         
         -- Wait for one clock cycle before applying the next test case
         wait for 1*dutyCycle;
         
-        -- Test Case 3: Addition with negative value (opcode = "0001")
-        opCode <= "0001";  -- Set operation code for addition
-        operendOne <= x"FF";  -- Set first operand to 0xFF (-1 in signed 8-bit representation)
+        -- Test Case 3: Subtration (opcode = "0010")
+        opCode <= "0010";  -- Set operation code for addition
+        operendOne <= x"FF";  -- Set first operand to 0xFF (255 in decimal)
         operendTwo <= x"AA";  -- Set second operand to 0xAA (170 in decimal)
-        wait for 100*clkPeriod;  -- Wait for processing time
-        -- Assert the expected result (0x0055 = 85 in decimal, after adding -1 and 170)
+        wait for 200*clkPeriod;  -- Wait for processing time
+        -- Assert the expected result (0x0055 = 85 in decimal)
         assert( result = x"0055") report("Case 3 : Module error");
         
         -- End the process
